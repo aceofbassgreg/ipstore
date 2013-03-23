@@ -7,7 +7,6 @@ development:
   adapter: sqlite3
   database: db/development.sqlite3
   pool: 5
-  port: 9999
   timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
@@ -17,7 +16,6 @@ test:
   adapter: sqlite3
   database: db/test.sqlite3
   pool: 5
-  port: 9999
   timeout: 5000
 
 production:

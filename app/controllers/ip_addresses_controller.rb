@@ -1,13 +1,20 @@
 class IpAddressesController < ApplicationController
-  def create
+require "net/http"
+
+  def index
+
   end
 
   def show
+
   end
 
-  def index
+  def new
+ 
   end
 
   def destroy
+   
   end
 end
+
