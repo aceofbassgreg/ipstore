@@ -1,4 +1,11 @@
 IPstore::Application.routes.draw do
+
+resources :ip_addresses
+root :to => 'ip_addresses#index'
+
+match 'ip/add' => 'ip_addresses#new'
+match 'ip/all' => 'ip_addresses#index'
+match 'ip/get' => 'ip_addresses#show'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +55,7 @@ IPstore::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+
 
   # See how all your routes lay out with "rake routes"
 
