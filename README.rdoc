@@ -2,3 +2,13 @@ This is an app that stores IP addresses. It was a problem given to me for educat
 and part of the problem set-up was the tests.rb file residing in the IPstore/test directory. My goal
 is to use TDD and let the tests dictate where this app is headed. Once I have passing tests, I will refactor
 and add anything else that is essential for this program to run effectively.
+
+An interesting hurdle I just overcame dealt with routing. Basically:  I used named routes per the problem set-up, but in doing so created non-RESTful resources. In other words, I didn't have HTTP requests associated with my routes, and so whenever I 
+ran the test file, my controller actions never functioned. After much Stack Overflow research and a visit to 
+Rails Routing from the Outside In, I realized I could associate HTTP verbs with named routes.
+
+Another issue I've had so far is wondering a) if there should be views, and b) how to obtain the IP addresses?
+I've realized that views are probably a bad idea, given that the test picks up all HTML from a page and this causes
+the test(s) to fail. Then the question is, how to obtain IP addresses? For now, I am doing just enough to make the tests pass, and if I have time I'll come back to the issue of how this program receives IP addresses.
+
+Once the routing was properly set up, I had the advantage of reading the Rails Server log to see what exactly was happening with the http requests in the tests. This helped big-time, especially regarding setting up the "def create" action (which is still in progress).
