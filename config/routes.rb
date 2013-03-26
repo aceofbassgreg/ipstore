@@ -1,11 +1,13 @@
 IPstore::Application.routes.draw do
 
-resources :ip_addresses
+
 root :to => 'ip_addresses#index'
 
-match 'ip/add' => 'ip_addresses#new'
-match 'ip/all' => 'ip_addresses#index'
-match 'ip/get' => 'ip_addresses#show'
+match 'ip/add' => 'ip_addresses#create', :via => :post
+match 'ip/add' => 'ip_addresses#new', :via => :get
+match 'ip/all' => 'ip_addresses#index', :via => :get
+match 'ip/get' => 'ip_addresses#show', :via => :get
+match 'ip/all' => 'ip_addresses#destroy', :via => :delete
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
