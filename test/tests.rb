@@ -23,7 +23,7 @@ class TestIpAddressServer < Test::Unit::TestCase
 
   def test_get_ip
     r = @http.get("/ip/get/1.2.3.4")
-    assert_equal("500", r.code)
+    assert_equal("500", r.code)  #500 is server error...need to customize response in def show
 
     r = @http.post("/ip/add", '["1.2.3.4","2.3.4.5"]', {"content-type" => "application/json"})
     assert_equal(r.code, "200")
@@ -41,5 +41,15 @@ class TestIpAddressServer < Test::Unit::TestCase
     assert_equal("200", r.code)
     j = JSON.load(r.body)
     assert_equal(["1.2.3.4", "2.3.4.5"], j)
+  end
+
+  def test_skip_duplicate_ip
+    r = @http.post("/ip/add", '["1.2.3.4", "1.2.3.4]', {"content-type" => "application/json"})
+    assert_equal(r.code, "200")
+
+    r = @http.get("/ip/all")
+    assert_equal("200", r.code)
+    j = JSON.load(r.body)
+    assert_equal(["1.2.3.4"], j)
   end
 end
