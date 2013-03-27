@@ -44,7 +44,7 @@ class TestIpAddressServer < Test::Unit::TestCase
   end
 
   def test_skip_duplicate_ip
-    r = @http.post("/ip/add", '["1.2.3.4", "1.2.3.4]', {"content-type" => "application/json"})
+    r = @http.post("/ip/add", '["1.2.3.4","1.2.3.4"]', {"content-type" => "application/json"})
     assert_equal(r.code, "200")
 
     r = @http.get("/ip/all")
