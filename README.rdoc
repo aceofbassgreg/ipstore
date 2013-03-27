@@ -17,3 +17,11 @@ params[:json].
 
 3/26 update
 An issue I had was getting the 'add' test to pass. To make a long story short:  my def create action was fine all along, but I didn't realize that the test was checking what was entered via def create against what was then retrieved with def index. Many lessons learned here, such as "really know what the test is doing"!
+
+3/27 (Final) update
+
+My last two issues that I haven't resoved are:
+
+1) I'm still allowing duplicates. I was trying to add conditional logic to my .each block in def create (which later would have been refactored) but I couldn't get it to pass the additional test I made. It dawned on me that there may be a way to use model validation, but instead of throwing an error just skipping that entry. I'll research this before tomorrow.
+
+2) I haven't been able to get the def show action to work. I realize that :ip makes for a dynamic route, and I also realize that it has dots in it and therefore needs some secret sauce to function. Suffice it to say, I have not found that secret sauce.
