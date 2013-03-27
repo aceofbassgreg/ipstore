@@ -9,21 +9,23 @@ require "json"
 
   def show
   	IpAddress.find(params[:ip])
-  rescue ActiveRecord::RecordNotFound
-    render(:partial => 'errors/internal_server_error', :status => :internal_server_error)
   end
 
   def create
-    params[:_json].each do |ip|
-      IpAddress.create(ip: ip) unless ip == :ip
-    end
+    existing_addresses = IpAddress.pluck(:ip)
 
-    render json: IpAddress.pluck(:ip)
+    params[:_json].each do |ip|
+      IpAddress.create(ip: ip) unless existing_addresses.include?(ip)
+    end
+    render json: existing_addresses
   end
 
   def destroy
     IpAddress.destroy_all
     head :ok
+  end
+
+  def do_nothing
   end
 end
 
