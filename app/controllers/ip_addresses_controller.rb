@@ -24,8 +24,5 @@ require "json"
     IpAddress.destroy_all
     head :ok
   end
-
-  def do_nothing
-  end
 end
 
