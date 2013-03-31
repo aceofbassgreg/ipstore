@@ -1,7 +1,4 @@
 class IpAddressesController < ApplicationController
-require "net/http"
-require "json"
-
 
   def index
     render json: IpAddress.pluck(:ip)
